@@ -1,7 +1,97 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
-  return <div>this is Register</div>;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name, email, password, photoURL);
+  };
+  return (
+    <div className="hero min-h-fit bg-base-200">
+      <div className="hero-content flex-col w-full">
+        <div className="text-center ">
+          <h1 className="text-5xl font-bold ">Register now!!!</h1>
+        </div>
+        <div className="card flex-shrink-0 w-5/12 shadow-2xl bg-base-100">
+          <form onSubmit={handleSubmit} className="card-body">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                className="input input-bordered"
+                required
+              />
+              <label className="label">
+                <span className="label-text">photoURL</span>
+              </label>
+              <input
+                type="text"
+                name="photoURL"
+                placeholder="PhotoURL"
+                className="input input-bordered"
+                required
+              />
+              <label className="label">
+                <span className="label-text">Email</span>
+              </label>
+              <input
+                type="email"
+                name="email"
+                placeholder="email"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Password</span>
+              </label>
+              <input
+                type={"password"}
+                name="password"
+                placeholder="password"
+                className="input input-bordered"
+                required
+              />
+              <div className="form-control">
+                <label className="label justify-start cursor-pointer">
+                  <input type="checkbox" className="checkbox" />
+                  <span className="pl-5">Show Password</span>
+                </label>
+              </div>
+              <label className="label">
+                <a href="#" className="label-text-alt link link-hover">
+                  Forgot password?
+                </a>
+              </label>
+            </div>
+            <div className="form-control mt-6">
+              <input
+                type="submit"
+                value="Register"
+                className="btn btn-primary"
+              />
+            </div>
+          </form>
+          <div className="form-control mt-6 inline px-10 pb-10">
+            Already Have an Account{" "}
+            <Link className=" text-blue-700" to="/login">
+              Please Log in{" "}
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Register;
