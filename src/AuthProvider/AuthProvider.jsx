@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
   updateCurrentUser,
@@ -11,7 +12,7 @@ import {
 import App from "../App";
 import app from "../firebase/firebase.config";
 
-const AuthContext = createContext(null);
+export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -28,6 +29,9 @@ const AuthProvider = ({ children }) => {
   const logOut = () => {
     return signOut(auth);
   };
+  const forgotPass = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -41,6 +45,8 @@ const AuthProvider = ({ children }) => {
     return updateProfile(user, {
       displayName: name,
       photoURL: photo,
+    }).then(() => {
+      console.log("user is updated");
     });
   };
 
@@ -51,6 +57,7 @@ const AuthProvider = ({ children }) => {
     loginUser,
     logOut,
     updateUser,
+    forgotPass,
   };
   return (
     <div>
