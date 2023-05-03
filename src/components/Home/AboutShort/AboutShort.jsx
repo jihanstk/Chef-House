@@ -4,7 +4,7 @@ import { FaQuoteLeft } from "react-icons/fa";
 
 const AboutShort = () => {
   return (
-    <div className="grid md:grid-cols-2 grid-cols-1 w-11/12 mx-auto">
+    <div className="grid md:grid-cols-2 grid-cols-1 w-11/12 mx-auto mb-10">
       <div className="relative">
         <img className="rounded-xl" src={aboutImg} alt="about Image" />
         <div className="absolute md:top-0 -top-16 md:left-0 left-16 w-8/12 bg-slate-100 rounded-b-lg text-center md:p-8">

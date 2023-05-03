@@ -8,6 +8,7 @@ import Home from "./components/Home/Home.jsx";
 import LogIn from "./components/LogIn/LogIn.jsx";
 import Blog from "./components/Blog/Blog.jsx";
 import Register from "./components/Register/Register.jsx";
+import SingleChef from "./components/Home/Chefs/SingeChef/SingleChef.jsx";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "chef/:id",
+        element: <SingleChef></SingleChef>,
+        loader: ({ params }) =>
+          fetch(
+            `https://chef-house-server-jihanstk.vercel.app/chef/${params.id}`
+          ),
       },
       {
         path: "blog",
