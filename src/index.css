@@ -25,6 +25,9 @@
 .swiper-wrapper {
   gap: 1.5rem;
 }
+.signOut {
+  display: block;
+}
 
 /* text Animation */
 
@@ -61,6 +64,7 @@
 }
 @keyframes animate {
   0% {
+    display: block;
     margin-top: 35px;
   }
 
@@ -78,14 +82,20 @@
   }
   90% {
     margin-top: -325px;
+    display: none;
   }
   100% {
+    display: none;
     margin-top: 35px;
+    display: block;
   }
 }
 
 @media screen and (max-width: 640px) {
   .for-lg {
+    display: none;
+  }
+  .signOut {
     display: none;
   }
   @keyframes animate {
@@ -96,7 +106,7 @@
     15% {
       margin-top: 15px;
     }
-    40% {
+    30% {
       margin-top: -50px;
     }
 

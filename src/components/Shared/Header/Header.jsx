@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaBars, FaSearch } from "react-icons/fa";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Header = () => {
   const [resNav, setResNav] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut();
+  };
 
   return (
     <div className="">
-      <nav className="shadow relative px-10 md:py-2 py-5 flex justify-between items-center w-full mx-auto">
+      <nav className="shadow relative md:px-10 px-5 md:py-2 py-5 flex justify-between items-center w-full mx-auto">
         <h1 className="md:text-4xl font-bold font-sans text-lg  ">
           Chef's House
         </h1>
@@ -58,10 +63,42 @@ const Header = () => {
                 Register
               </NavLink>
             </li>
+            <li className="md:hidden visible text-xl text-slate-600 hover:text-slate-700 mb-2">
+              <button
+                onClick={handleLogOut}
+                className=" border-2 rounded-xl border-black/50 p-2 hover:bg-slate-700/20 "
+              >
+                SignOut
+              </button>
+            </li>
           </ul>
         </div>
-        <div className="flex gap-5">
-          <FaSearch className="text-xl"></FaSearch>
+        <div className="flex items-center gap-5">
+          {user ? (
+            <div className="flex items-center justify-between">
+              <img
+                className="w-10  h-10 rounded-full mr-2"
+                src={user.photoURL}
+                alt="Profile"
+              />
+              <button
+                onClick={handleLogOut}
+                className="signOut border-2 rounded-xl border-black/50 p-2 hover:bg-slate-700/20 "
+              >
+                SignOut
+              </button>
+            </div>
+          ) : (
+            <div>
+              {" "}
+              <Link
+                className="border-2 rounded-xl border-black/50 p-2 px-5 hover:bg-slate-700/20 "
+                to="/login"
+              >
+                Login
+              </Link>{" "}
+            </div>
+          )}
           <div
             onClick={() => setResNav(!resNav)}
             className="md:hidden visible text-xl"

@@ -10,6 +10,7 @@ import Blog from "./components/Blog/Blog.jsx";
 import Register from "./components/Register/Register.jsx";
 import SingleChef from "./components/Home/Chefs/SingeChef/SingleChef.jsx";
 import AuthProvider from "./AuthProvider/AuthProvider.jsx";
+import PrivetRoute from "./PrivetRoute/PrivetRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,11 @@ const router = createBrowserRouter([
       },
       {
         path: "chef/:id",
-        element: <SingleChef></SingleChef>,
+        element: (
+          <PrivetRoute>
+            <SingleChef></SingleChef>
+          </PrivetRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://chef-house-server-jihanstk.vercel.app/chef/${params.id}`

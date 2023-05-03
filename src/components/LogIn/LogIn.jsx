@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
@@ -16,10 +16,11 @@ const LogIn = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
-    createUser(email, password)
+    loginUser(email, password)
       .then((result) => {
         const user = result.user;
-        setSuccessMessage("Your User is Created");
+        setSuccessMessage("Your User is logedin");
+        console.log(user);
         form.reset();
       })
       .catch((err) => setError(err.message));
@@ -30,7 +31,7 @@ const LogIn = () => {
         <div className="text-center ">
           <h1 className="text-5xl font-bold">Please Log In!!!</h1>
         </div>
-        <div className="card flex-shrink-0 w-5/12 shadow-2xl bg-base-100">
+        <div className="card flex-shrink-0 md:w-5/12 shadow-2xl bg-base-100">
           <form onSubmit={handleSubmit} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -49,7 +50,7 @@ const LogIn = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="password"
+                type={passShow ? "text" : "password"}
                 name="password"
                 placeholder="password"
                 className="input input-bordered"
@@ -79,6 +80,8 @@ const LogIn = () => {
               <Link className=" ml-2 text-blue-600" to="/register">
                 Please Register
               </Link>
+              <p className="text-green-700">{successMessage}</p>
+              <p className="text-red-400">{error}</p>
             </div>
           </form>
         </div>
