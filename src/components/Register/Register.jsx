@@ -18,6 +18,17 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(name, email, password, photoURL);
+    if (password.length < 6) {
+      setError("you Need to add 6 character");
+      console.log(password);
+      return;
+    } else if (!/^(?=.*[a-z])(?=.*[A-Z])/.test(password)) {
+      setError("you Need to add At last 1 Uppercase");
+      return;
+    } else if (!/^(?=.*[0-9])(?=.*[!@#])/.test(password)) {
+      setError("you Need to add At last 1 number and special character");
+      return;
+    }
     createUser(email, password)
       .then((result) => {
         const user = result.user;

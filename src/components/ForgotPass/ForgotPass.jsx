@@ -1,17 +1,9 @@
-import React, { useContext, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
+import React from "react";
 
-const LogIn = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+const ForgotPass = () => {
   const { loginUser } = useContext(AuthContext);
   const [successMessage, setSuccessMessage] = useState("");
   const [error, setError] = useState("");
-  const [passShow, setPassShow] = useState(false);
-  // console.log(location);
-  const from = location.state?.from?.pathname;
-  console.log(from);
 
   const handleSubmit = (e) => {
     setError("");
@@ -19,17 +11,8 @@ const LogIn = () => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
-    const password = form.password.value;
-    console.log(email, password);
-    loginUser(email, password)
-      .then((result) => {
-        const user = result.user;
-        setSuccessMessage("Your User is logedin");
-        console.log(user);
-        form.reset();
-        navigate(from);
-      })
-      .catch((err) => setError(err.message));
+
+    console.log(email);
   };
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -96,4 +79,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default ForgotPass;

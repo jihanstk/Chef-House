@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { FaBars, FaSearch } from "react-icons/fa";
+import { FaBars, FaSearch, FaTimes } from "react-icons/fa";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Header = () => {
@@ -77,6 +77,7 @@ const Header = () => {
           {user ? (
             <div className="flex items-center justify-between">
               <img
+                title={user.displayName}
                 className="w-10  h-10 rounded-full mr-2"
                 src={user.photoURL}
                 alt="Profile"
@@ -103,7 +104,7 @@ const Header = () => {
             onClick={() => setResNav(!resNav)}
             className="md:hidden visible text-xl"
           >
-            <FaBars></FaBars>
+            {resNav ? <FaTimes></FaTimes> : <FaBars></FaBars>}
           </div>
         </div>
       </nav>

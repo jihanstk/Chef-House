@@ -26,7 +26,7 @@ const SingleChefRecipe = ({ recipe }) => {
           <ol className=" list-decimal ">
             {recipe.ingredients.length > 5
               ? recipe.ingredients
-                  .slice(0, 5)
+                  .slice(ShowMore ? "" : 0, 5)
                   .map((ingredient, i) => <li key={i}>{ingredient}</li>)
               : recipe.ingredients}
 
