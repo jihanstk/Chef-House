@@ -23,7 +23,7 @@ const Chefs = () => {
     <div className="md:w-9/12 w-full mx-auto">
       <div className="my-14 text-center">
         <h1 className=" text-3xl font-bold my-5">Chef's preview</h1>
-        <p className="text-slate-500 w-6/12 mx-auto">
+        <p className="text-slate-500 md:w-6/12 md:p-5 px-4 mx-auto">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod nam
           dolor minus dolores odio nisi. Lorem ipsum dolor sit amet consectetur
           adipisicing elit. Dolore dignissimos in dicta eligendi, possimus

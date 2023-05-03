@@ -1,19 +1,25 @@
 import React, { useState } from "react";
 import { HiOutlineBookmark } from "react-icons/hi2";
+import { ToastContainer, toast } from "react-toastify";
 
 const SingleChefRecipe = ({ recipe }) => {
   const [ShowMore, setShowMore] = useState(false);
+  const bookMarked = () => {
+    toast("added to Favorite");
+  };
   return (
     <div>
       <div className=" relative card md:w-96 bg-base-100 shadow-xl overflow-hidden">
         <figure className="w-full ">
           <img
-            className="md:w-full w-10/12 h-full"
+            className="md:w-full w-10/12  h-60"
             src={recipe.photo}
             alt="Shoes"
           />
 
-          <HiOutlineBookmark className=" absolute top-5 right-10 z-50 text-slate-300 font-bold text-2xl"></HiOutlineBookmark>
+          <button onClick={bookMarked}>
+            <HiOutlineBookmark className=" absolute top-5 right-10 z-50 text-slate-300 font-bold text-2xl"></HiOutlineBookmark>
+          </button>
         </figure>
         <div className="card-body">
           <h2 className="card-title">{recipe.recipeName}</h2>
