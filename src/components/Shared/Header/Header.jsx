@@ -12,12 +12,12 @@ const Header = () => {
           Chef's House
         </h1>
         <div
-          className={`md:static absolute duration-300 ${
-            resNav ? "top-11 right-0" : "-top-60 right-0"
+          className={`md:static absolute z-50 duration-300 md:w-auto w-full text-center ${
+            resNav ? "top-16 right-0" : "-top-60 right-0"
           }`}
         >
-          <ul className="md:flex gap-8 items-center p-5">
-            <li className="text-xl text-slate-600 hover:text-slate-700 ">
+          <ul className="md:flex  gap-8 items-center z-40 md:bg-white bg-white/90 p-5">
+            <li className="text-xl text-slate-600 hover:text-slate-700 mb-2 ">
               <NavLink
                 to="/"
                 className={({ isActive }) =>
@@ -27,7 +27,7 @@ const Header = () => {
                 Home
               </NavLink>
             </li>
-            <li className="text-xl text-slate-600 hover:text-slate-700 ">
+            <li className="text-xl text-slate-600 hover:text-slate-700 mb-2">
               <NavLink
                 to="/blog"
                 className={({ isActive }) =>
@@ -37,7 +37,7 @@ const Header = () => {
                 blog
               </NavLink>
             </li>
-            <li className="text-xl text-slate-600 hover:text-slate-700 ">
+            <li className="text-xl text-slate-600 hover:text-slate-700 mb-2">
               <NavLink
                 to="/login"
                 className={({ isActive }) =>
@@ -48,7 +48,7 @@ const Header = () => {
               </NavLink>
             </li>
 
-            <li className="text-xl text-slate-600 hover:text-slate-700 ">
+            <li className="text-xl text-slate-600 hover:text-slate-700 mb-2">
               <NavLink
                 to="/register"
                 className={({ isActive }) =>
