@@ -21,10 +21,11 @@ const SingleChef = () => {
           </h3>
         </div>
       </div>
-      <div className="p-16">
-        <h1 className="text-4xl font-bold text-center">Food Recipe is Here</h1>
-        {singleChefRec.recipe.map((CR) => {})}
-        <SingleChefRecipe recipe={singleChefRec.recipe}></SingleChefRecipe>
+      <h1 className="text-4xl font-bold text-center">Food Recipe is Here</h1>
+      <div className="md:p-16 grid md:grid-cols-3 grid-cols-1 ">
+        {singleChefRec.recipe.map((CR, i) => {
+          return <SingleChefRecipe key={i} recipe={CR}></SingleChefRecipe>;
+        })}
       </div>
     </div>
   );
