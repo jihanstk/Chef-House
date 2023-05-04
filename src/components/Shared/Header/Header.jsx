@@ -42,16 +42,6 @@ const Header = () => {
                 blog
               </NavLink>
             </li>
-            <li className="text-xl text-slate-600 hover:text-slate-700 mb-2">
-              <NavLink
-                to="/login"
-                className={({ isActive }) =>
-                  "nav-link" + (isActive ? " text-orange-600" : " ")
-                }
-              >
-                Log in
-              </NavLink>
-            </li>
 
             <li className="text-xl text-slate-600 hover:text-slate-700 mb-2">
               <NavLink
