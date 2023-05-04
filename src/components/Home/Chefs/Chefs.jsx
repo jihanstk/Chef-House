@@ -95,7 +95,7 @@ const Chefs = () => {
                       className="btn btn-success"
                       to={`/chef/${singleChef.id}`}
                     >
-                      view Details
+                      view Recipe
                     </Link>
                   </div>
                 </div>

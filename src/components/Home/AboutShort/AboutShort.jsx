@@ -1,12 +1,21 @@
 import React from "react";
 import aboutImg from "../../../assets/image/about-chef-food.webp";
 import { FaQuoteLeft } from "react-icons/fa";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const AboutShort = () => {
   return (
     <div className="grid md:grid-cols-2 grid-cols-1 w-11/12 mx-auto mb-10">
       <div className="relative">
-        <img className="rounded-xl" src={aboutImg} alt="about Image" />
+        <LazyLoadImage
+          className="rounded-xl "
+          src={aboutImg}
+          height="auto"
+          width="100%"
+          effect="blur"
+        />
+        {/* <img className="rounded-xl" src={aboutImg} alt="about Image" /> */}
         <div className="absolute md:top-0 -top-16 md:left-0 left-16 w-8/12 bg-slate-100 rounded-b-lg text-center md:p-8">
           <FaQuoteLeft className="mx-auto text-2xl"></FaQuoteLeft>
           <h5 className="md:text-2xl font-bold text-slate-600">
