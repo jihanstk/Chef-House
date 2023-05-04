@@ -2,6 +2,7 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import SingleChefRecipe from "./SingleChefRecipe/SingleChefRecipe";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SingleChef = () => {
   const singleChefRec = useLoaderData();
@@ -27,7 +28,7 @@ const SingleChef = () => {
       <h1 className="text-4xl font-bold text-center mb-10">
         Food Recipe is Here
       </h1>
-      <div className="md:p-16 grid md:grid-cols-3 grid-cols-1 ">
+      <div className="md:p-16 md:flex gap-10  ">
         {singleChefRec.recipe.map((CR, i) => {
           return <SingleChefRecipe key={i} recipe={CR}></SingleChefRecipe>;
         })}

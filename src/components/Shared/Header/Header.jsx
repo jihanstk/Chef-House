@@ -76,7 +76,7 @@ const Header = () => {
         <div className="flex items-center gap-5">
           {user ? (
             <div className="flex items-center justify-between">
-              {user.photoURL ? (
+              {user?.photoURL ? (
                 <img
                   title={user.displayName}
                   className="w-10  h-10 rounded-full mr-2"
@@ -84,7 +84,7 @@ const Header = () => {
                   alt="Profile"
                 />
               ) : (
-                <p className=" font-bold">{user.displayName?.slice(0, 6)}'s</p>
+                <p className=" font-bold">{user?.displayName?.slice(0, 6)}'s</p>
               )}
               <button
                 onClick={handleLogOut}

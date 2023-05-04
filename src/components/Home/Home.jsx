@@ -3,6 +3,7 @@ import Header from "../Shared/Header/Header";
 import Banner from "./Banner/Banner";
 import AboutShort from "./AboutShort/AboutShort";
 import Chefs from "./Chefs/Chefs";
+import OurServices from "./OurService/OurServices";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <Banner></Banner>
       <AboutShort></AboutShort>
       <Chefs></Chefs>
+      <OurServices></OurServices>
     </div>
   );
 };

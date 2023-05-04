@@ -6,7 +6,7 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 const LogIn = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { loginUser, googleLogin, githubLogin } = useContext(AuthContext);
+  const { loginUser, googleLogin, githubLogin, user } = useContext(AuthContext);
   const [successMessage, setSuccessMessage] = useState("");
   const [error, setError] = useState("");
   const [passShow, setPassShow] = useState(false);
@@ -16,19 +16,29 @@ const LogIn = () => {
   const handleGoogle = () => {
     setSuccessMessage("");
     setError("");
+    if (user) {
+      setError("Already Your User is logedin");
+      return;
+    }
     googleLogin()
       .then(() => {
         setSuccessMessage("Google Login");
+        navigate(from);
       })
       .catch((err) => setError(err.message));
   };
   const handelGitHub = () => {
     setSuccessMessage("");
     setError("");
+    if (user) {
+      setError("Already Your User is logedin");
+      return;
+    }
     githubLogin()
       .then((res) => {
         setSuccessMessage("GitHub Login");
-        console.log(res);
+
+        navigate(from);
       })
       .catch((err) => setError(err.message));
   };
@@ -36,6 +46,11 @@ const LogIn = () => {
   const handleSubmit = (e) => {
     setError("");
     setSuccessMessage("");
+    if (user) {
+      setError("Already Your User is logedin");
+      return;
+    }
+    console.log(user.photoURL);
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
@@ -44,7 +59,7 @@ const LogIn = () => {
     loginUser(email, password)
       .then((result) => {
         const user = result.user;
-        setSuccessMessage("Your User is logedin");
+        setSuccessMessage("You are logedin");
         console.log(user);
         form.reset();
         navigate(from);

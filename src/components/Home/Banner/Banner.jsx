@@ -25,23 +25,26 @@ const Banner = () => {
         ></video>
       </div>
       <div className=" p-6 absolute md:top-1/4 top-32  md:left-1/4 left-0 text-center mx-auto md:w-6/12 w-full">
-        <p className="mb-4 md:text-4xl text-xl font-extrabold inline-block slides">
+        <h1 className="md:text-5xl text-2xl font-bold">
+          Indulge in the Exquisite Flavors of Chef House: Where Culinary
+          Artistry Meets Fine Dining
+        </h1>
+        <p className=" md:text-4xl text-xl font-extrabold inline-block slides">
           <span>Boiled</span>
           <span>Fries</span>
           <span>Steamed</span>
           <span>chicken</span>
           <span>beef</span>
         </p>
-        <h1 className="md:text-6xl text-2xl font-bold">
-          amet consectetur adipisicing elit. Placeat aut eveniet delectus
-          voluptates, doloribus iusto a
-        </h1>
-        <p className="md:text-xl text-slate-700 my-10">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium,
-          error alias quidem cumque sequi aliquam!
+        <p className="md:text-xl text-slate-700 my-4">
+          Welcome to Chef House, where every dish is a masterpiece crafted by
+          our expert chefs with the finest ingredients and culinary techniques.
+          Our elegant ambiance and impeccable service make for a truly
+          unforgettable dining experience. Join us and indulge in the delectable
+          flavors that only Chef House can offer
         </p>
         <button className="btn btn-error">
-          Explore Recipes <IoMdRestaurant className="text-2xl"></IoMdRestaurant>{" "}
+          Explore Chefs <IoMdRestaurant className="text-2xl"></IoMdRestaurant>{" "}
         </button>
       </div>
     </div>

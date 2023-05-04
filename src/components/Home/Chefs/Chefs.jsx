@@ -11,6 +11,8 @@ import "swiper/css/autoplay";
 import { A11y, Autoplay, FreeMode, Navigation, Pagination } from "swiper";
 import { Link } from "react-router-dom";
 import { FaHeart, FaHeartbeat, FaRegHeart } from "react-icons/fa";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 const Chefs = () => {
   const [chefData, setChefData] = useState([]);
 
@@ -68,10 +70,12 @@ const Chefs = () => {
             <SwiperSlide key={singleChef.id}>
               <div className=" relative card md:w-96 w-11/12 shadow-lg rounded-xl  md:mx-10 mx-auto">
                 <figure className="relative px-10 pt-10 bg-blue-500 overflow-visible h-44">
-                  <img
-                    src={singleChef.photo}
-                    alt="chef"
+                  <LazyLoadImage
                     className=" absolute -bottom-10 h-40 w-40 rounded-full border-spacing-6 border-8 border-stone-50 "
+                    src={singleChef.photo}
+                    height="10rem"
+                    width="10rem"
+                    effect="blur"
                   />
                 </figure>
                 <div className="card-body items-center text-left mt-5">

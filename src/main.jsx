@@ -13,11 +13,13 @@ import AuthProvider from "./AuthProvider/AuthProvider.jsx";
 import PrivetRoute from "./PrivetRoute/PrivetRoute.jsx";
 import ForgotPass from "./components/ForgotPass/ForgotPass.jsx";
 import UserLayout from "./Layouts/UserLayOut/UserLayout.jsx";
+import ErrorPage from "./ErrorPage/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
