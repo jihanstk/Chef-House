@@ -11,6 +11,8 @@ import Register from "./components/Register/Register.jsx";
 import SingleChef from "./components/Home/Chefs/SingeChef/SingleChef.jsx";
 import AuthProvider from "./AuthProvider/AuthProvider.jsx";
 import PrivetRoute from "./PrivetRoute/PrivetRoute.jsx";
+import ForgotPass from "./components/ForgotPass/ForgotPass.jsx";
+import UserLayout from "./Layouts/UserLayOut/UserLayout.jsx";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,13 @@ const router = createBrowserRouter([
         path: "blog",
         element: <Blog></Blog>,
       },
+    ],
+  },
+
+  {
+    path: "/",
+    element: <UserLayout></UserLayout>,
+    children: [
       {
         path: "login",
         element: <LogIn></LogIn>,
@@ -44,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>,
+      },
+      {
+        path: "forgot-password",
+        element: <ForgotPass></ForgotPass>,
       },
     ],
   },

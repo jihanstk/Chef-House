@@ -20,11 +20,9 @@
 .card-header {
   background-color: #4070f4;
   height: 13rem;
-  border-radius: 25px 25px 0 25px;
+  border-radius: 25px;
 }
-.swiper-wrapper {
-  gap: 1.5rem;
-}
+
 .signOut {
   display: block;
 }

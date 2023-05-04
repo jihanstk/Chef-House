@@ -1,10 +1,13 @@
 import React, { createContext, useEffect, useState } from "react";
 import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateCurrentUser,
   updateProfile,
@@ -17,6 +20,9 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const auth = getAuth(app);
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+  console.log(user);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -28,6 +34,12 @@ const AuthProvider = ({ children }) => {
   };
   const logOut = () => {
     return signOut(auth);
+  };
+  const googleLogin = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
+  const githubLogin = () => {
+    return signInWithPopup(auth, githubProvider);
   };
   const forgotPass = (email) => {
     return sendPasswordResetEmail(auth, email);
@@ -58,6 +70,8 @@ const AuthProvider = ({ children }) => {
     logOut,
     updateUser,
     forgotPass,
+    googleLogin,
+    githubLogin,
   };
   return (
     <div>

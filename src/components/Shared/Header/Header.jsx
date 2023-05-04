@@ -14,7 +14,7 @@ const Header = () => {
     <div className="">
       <nav className="shadow relative md:px-10 px-5 md:py-2 py-5 flex justify-between items-center w-full mx-auto">
         <h1 className="md:text-4xl font-bold font-sans text-lg  ">
-          Chef's House
+          CHEF'S HOUSE
         </h1>
         <div
           className={`md:static absolute z-50 duration-300 md:w-auto w-full text-center ${
@@ -26,7 +26,7 @@ const Header = () => {
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  isActive ? " text-orange-600" : " "
+                  +isActive ? " text-orange-600" : " "
                 }
               >
                 Home
@@ -76,15 +76,19 @@ const Header = () => {
         <div className="flex items-center gap-5">
           {user ? (
             <div className="flex items-center justify-between">
-              <img
-                title={user.displayName}
-                className="w-10  h-10 rounded-full mr-2"
-                src={user.photoURL}
-                alt="Profile"
-              />
+              {user.photoURL ? (
+                <img
+                  title={user.displayName}
+                  className="w-10  h-10 rounded-full mr-2"
+                  src={user.photoURL}
+                  alt="Profile"
+                />
+              ) : (
+                <p className=" font-bold">{user.displayName?.slice(0, 6)}'s</p>
+              )}
               <button
                 onClick={handleLogOut}
-                className="signOut border-2 rounded-xl border-black/50 p-2 hover:bg-slate-700/20 "
+                className="signOut border-2 rounded-xl border-black/50 ml-2 p-2 hover:bg-slate-700/20 "
               >
                 SignOut
               </button>

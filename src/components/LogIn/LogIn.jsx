@@ -1,17 +1,37 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const LogIn = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, googleLogin, githubLogin } = useContext(AuthContext);
   const [successMessage, setSuccessMessage] = useState("");
   const [error, setError] = useState("");
   const [passShow, setPassShow] = useState(false);
   // console.log(location);
   const from = location.state?.from?.pathname;
   console.log(from);
+  const handleGoogle = () => {
+    setSuccessMessage("");
+    setError("");
+    googleLogin()
+      .then(() => {
+        setSuccessMessage("Google Login");
+      })
+      .catch((err) => setError(err.message));
+  };
+  const handelGitHub = () => {
+    setSuccessMessage("");
+    setError("");
+    githubLogin()
+      .then((res) => {
+        setSuccessMessage("GitHub Login");
+        console.log(res);
+      })
+      .catch((err) => setError(err.message));
+  };
 
   const handleSubmit = (e) => {
     setError("");
@@ -73,9 +93,12 @@ const LogIn = () => {
                 </label>
               </div>
               <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
+                <Link
+                  to="/forgot-password"
+                  className="label-text-alt link link-hover"
+                >
                   Forgot password?
-                </a>
+                </Link>
               </label>
             </div>
             <div className="form-control mt-6">
@@ -88,6 +111,22 @@ const LogIn = () => {
               </Link>
               <p className="text-green-700">{successMessage}</p>
               <p className="text-red-400">{error}</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <div
+                onClick={handleGoogle}
+                className=" cursor-pointer flex  items-center font-bold text-orange-600 hover:bg-orange-600/20 border-2 border-slate-600 p-3 rounded-xl"
+              >
+                <FaGoogle className="text-xl mr-3"></FaGoogle>
+                <span>Google</span>
+              </div>
+              <div
+                onClick={handelGitHub}
+                className=" cursor-pointer flex  items-center font-bold text-gray-700 hover:bg-slate-500/20 border-2 border-slate-600 p-3 rounded-xl"
+              >
+                <FaGithub className="text-xl mr-3"></FaGithub>
+                <span>GitHub</span>
+              </div>
             </div>
           </form>
         </div>
