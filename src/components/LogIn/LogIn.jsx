@@ -44,23 +44,26 @@ const LogIn = () => {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(user);
     setError("");
     setSuccessMessage("");
     if (user) {
       setError("Already Your User is logedin");
       return;
     }
-    console.log(user.photoURL);
-    e.preventDefault();
+    // console.log(user.photoURL);
     const form = e.target;
+    console.log(form);
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+    // return;
     loginUser(email, password)
       .then((result) => {
         const user = result.user;
         setSuccessMessage("You are logedin");
-        console.log(user);
+
         form.reset();
         navigate(from);
       })

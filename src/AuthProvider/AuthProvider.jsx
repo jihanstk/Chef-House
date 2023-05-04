@@ -18,11 +18,11 @@ import app from "../firebase/firebase.config";
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+
   const [loading, setLoading] = useState(true);
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
-  console.log(user);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -53,8 +53,13 @@ const AuthProvider = ({ children }) => {
       unsubscribe();
     };
   }, []);
-  const updateUser = (user, name, photo) => {
-    return updateProfile(user, {
+  const updateUser = (useR, name, photo) => {
+    const updatedUser = { ...user };
+    updatedUser.displayName = name;
+    updatedUser.photoURL = photo;
+    setUser(updatedUser);
+
+    return updateProfile(useR, {
       displayName: name,
       photoURL: photo,
     }).then(() => {

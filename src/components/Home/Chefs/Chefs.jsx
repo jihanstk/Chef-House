@@ -94,8 +94,8 @@ const Chefs = () => {
                   </p>
                   <div className="card-actions">
                     <Link
-                      to={`/chef/${singleChef.id}`}
                       className="btn btn-success"
+                      to={`/chef/${singleChef.id}`}
                     >
                       view Details
                     </Link>
