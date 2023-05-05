@@ -9,7 +9,6 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  updateCurrentUser,
   updateProfile,
 } from "firebase/auth";
 import App from "../App";

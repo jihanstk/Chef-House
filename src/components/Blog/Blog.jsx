@@ -1,18 +1,30 @@
 import React from "react";
+import jsPDF from "jspdf";
 import { FaFileDownload } from "react-icons/fa";
 
 const Blog = () => {
+  const handleGeneratePDF = () => {
+    const doc = new jsPDF("p", "pt", "a4");
+    doc.html(document.querySelector("#pdf-content"), {
+      callback: function (pdf) {
+        pdf.save("Blog.pdf");
+      },
+    });
+  };
   return (
     <div>
       <div className="py-10 bg-orange-100 bg-opacity-30 flex gap-4 items-center justify-center">
         <h2 className="text-3xl text-center ">
           blog <span className="font-semibold ">Download</span> here
         </h2>
-        <button className="btn btn-circle">
+        <button onClick={handleGeneratePDF} className="btn btn-circle">
           <FaFileDownload></FaFileDownload>
         </button>
       </div>
-      <div className="grid md:grid-cols-2 grid-cols-1 w-10/12 mx-auto  gap-3 p-2">
+      <div
+        id="pdf-content"
+        className="grid md:grid-cols-2 grid-cols-1 w-9/12 mx-auto  gap-3 p-2"
+      >
         <div className="mt-8 border p-2 bg-slate-200 bg-opacity-20 shadow-md rounded-md">
           <h2 className="text-4xl font-semibold">
             What is the differences between uncontrolled and controlled
